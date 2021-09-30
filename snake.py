@@ -17,3 +17,6 @@ class Cobra(Turtle):
 
     def esquerda(self):
         self.setheading(180)
+
+    def pintar(self):
+        self.stamp()
