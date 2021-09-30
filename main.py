@@ -1,21 +1,24 @@
-from turtle import Turtle, Screen
-import snake as sk
+from turtle import Screen
+from snake import Cobra
 
 canvas = Screen()
 canvas.setup(800, 600)
-sk.celeste.speed(1)
 
-wall = [300, -300]
+celeste = Cobra()
+
+celeste.speed(0)
+
+wall = [290, -290]
+wall2 = [390, -390]
 
 canvas.listen()
-canvas.onkeypress(sk.sobe, 'w')
-canvas.onkeypress(sk.desce, 's')
-canvas.onkeypress(sk.direita, 'd')
-canvas.onkeypress(sk.esquerda, 'a')
+canvas.onkeypress(celeste.sobe, 'w')
+canvas.onkeypress(celeste.desce, 's')
+canvas.onkeypress(celeste.direita, 'd')
+canvas.onkeypress(celeste.esquerda, 'a')
 
 while True:
-    sk.movimento()
-    if sk.celeste.xcor() in wall or sk.celeste.ycor() in wall:
+    celeste.movimento()
+    if celeste.xcor() in wall2 or celeste.ycor() in wall:
+        print('bateu')
         break
-
-canvas.exitonclick()

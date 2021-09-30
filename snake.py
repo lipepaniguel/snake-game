@@ -1,22 +1,19 @@
 from turtle import Turtle
-celeste = Turtle()
 
 
-def movimento():
-    celeste.forward(10)
+class Cobra(Turtle):
 
+    def movimento(self):
+        self.forward(3)
 
-def sobe():
-    celeste.setheading(90)
+    def sobe(self):
+        self.setheading(90)
 
+    def desce(self):
+        self.setheading(270)
 
-def desce():
-    celeste.setheading(270)
+    def direita(self):
+        self.setheading(0)
 
-
-def direita():
-    celeste.setheading(0)
-
-
-def esquerda():
-    celeste.setheading(180)
+    def esquerda(self):
+        self.setheading(180)
