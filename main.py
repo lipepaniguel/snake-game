@@ -1,12 +1,19 @@
 from turtle import Screen
-from apple import nova_apple,  maca
+# from apple import nova_apple
 from snake import celeste
+import random
 
 canvas = Screen()
 canvas.title('Snake')
 canvas.setup(400, 400)
 canvas.screensize(370, 370)
 canvas.bgcolor('black')
+
+maca = celeste.clone()
+x = random.randint(-180, 180)
+y = random.randint(-180, 180)
+maca.goto(x, y)
+maca.showturtle()
 
 
 canvas.listen()
@@ -15,9 +22,9 @@ canvas.onkeypress(celeste.desce, 's')
 canvas.onkeypress(celeste.direita, 'd')
 canvas.onkeypress(celeste.esquerda, 'a')
 
-i = 0
+comprimento = 0
 score = 0
-nova_apple()
+
 tamanho_tail = [0]
 tail = [0]
 ultimo_rabo = []
@@ -37,7 +44,6 @@ while True:
     tail[0] = ultimo_rabo
 
     if len(tail) > 0:
-        print(tail[1:])
         if celeste.pos() in tail[1:]:
             break
 
@@ -46,11 +52,15 @@ while True:
     if celeste.ycor() >= 190 or celeste.ycor() <= -190:
         break
     if celeste.distance(maca) < 6:
-        i += 2
+        comprimento += 2
         score += 1
         tail.append(score)
-        nova_apple()
 
-    celeste.rabo(i)
+        x = random.randint(-180, 180)
+        y = random.randint(-180, 180)
+        maca.goto(x, y)
+        maca.showturtle()
+
+    celeste.rabo(comprimento)
 
 canvas.exitonclick()

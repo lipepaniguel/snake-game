@@ -4,7 +4,7 @@ from turtle import Turtle
 class Cobra(Turtle):
 
     def movimento(self):
-        self.forward(1)
+        self.forward(3)
 
     def rabo(self, i):
         n = self.stamp() - i
