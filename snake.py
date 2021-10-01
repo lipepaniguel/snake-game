@@ -22,14 +22,6 @@ class Cobra(Turtle):
     def esquerda(self):
         self.setheading(180)
 
-    def teste_movimento(self):
-        self.forward(3)
-        self.stamp()
-
-    def teste_rabo(self):
-        print(self.stamp())
-        self.clearstamps(10)
-
 
 celeste = Cobra()
 

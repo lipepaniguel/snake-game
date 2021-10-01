@@ -16,17 +16,20 @@ canvas.onkeypress(celeste.direita, 'd')
 canvas.onkeypress(celeste.esquerda, 'a')
 
 i = 0
+score = 0
 nova_apple()
 
 while True:
 
     celeste.movimento()
+
     if celeste.xcor() >= 190 or celeste.xcor() <= -190:
         break
     if celeste.ycor() >= 190 or celeste.ycor() <= -190:
         break
     if celeste.distance(maca) < 6:
         i += 2
+        score += 1
         nova_apple()
 
     celeste.rabo(i)
