@@ -36,7 +36,9 @@ while True:
 
     tail[0] = ultimo_rabo
 
-    print(tail)
+    for n_rabo in tail:
+        if celeste.pos == n_rabo:
+            break
 
     if celeste.xcor() >= 190 or celeste.xcor() <= -190:
         break
@@ -49,9 +51,5 @@ while True:
         nova_apple()
 
     celeste.rabo(i)
-    # tail[0] = celeste.pos()
-    print(tail)
-    print(tamanho_tail)
-    print(ultimo_rabo)
 
 canvas.exitonclick()
