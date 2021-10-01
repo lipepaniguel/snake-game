@@ -8,7 +8,6 @@ class Cobra(Turtle):
 
     def rabo(self, i):
         n = self.stamp() - i
-        print(n)
         self.clearstamp(n)
 
     def sobe(self):
@@ -30,3 +29,13 @@ class Cobra(Turtle):
     def teste_rabo(self):
         print(self.stamp())
         self.clearstamps(10)
+
+
+celeste = Cobra()
+
+celeste.resizemode('user')
+celeste.shapesize(0.2, 0.2, 3)
+celeste.shape('circle')
+celeste.color('white')
+celeste.penup()
+celeste.speed(0)
