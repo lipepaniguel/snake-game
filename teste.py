@@ -20,18 +20,7 @@ canvas.onkeypress(celeste.sobe, 'w')
 canvas.onkeypress(celeste.desce, 's')
 canvas.onkeypress(celeste.direita, 'd')
 canvas.onkeypress(celeste.esquerda, 'a')
-canvas.onkeypress(celeste.pintar, 'space')
-
-while True:
-    i = 6
-    celeste.movimento()
-    if celeste.xcor() >= 180 or celeste.xcor() <= -180:
-        print('bateu')
-        break
-    if celeste.ycor() >= 180 or celeste.ycor() <= -180:
-        print('bateu')
-        break
-    celeste.rabo(i)
-    i += 2
+canvas.onkeypress(celeste.teste_movimento, 'space')
+canvas.onkeypress(celeste.teste_rabo, 'Return')
 
 canvas.exitonclick()
