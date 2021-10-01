@@ -36,8 +36,9 @@ while True:
 
     tail[0] = ultimo_rabo
 
-    for n_rabo in tail:
-        if celeste.pos == n_rabo:
+    if len(tail) > 0:
+        print(tail[1:])
+        if celeste.pos() in tail[1:]:
             break
 
     if celeste.xcor() >= 190 or celeste.xcor() <= -190:
