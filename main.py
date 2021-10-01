@@ -18,10 +18,25 @@ canvas.onkeypress(celeste.esquerda, 'a')
 i = 0
 score = 0
 nova_apple()
+tamanho_tail = [0]
+tail = [0]
+ultimo_rabo = []
+
 
 while True:
 
     celeste.movimento()
+    ultimo_rabo = celeste.pos()
+
+    j = -1
+
+    for i in range(len(tail) - 1):
+        tail[j] = tail[j - 1]
+        j -= 1
+
+    tail[0] = ultimo_rabo
+
+    print(tail)
 
     if celeste.xcor() >= 190 or celeste.xcor() <= -190:
         break
@@ -30,8 +45,13 @@ while True:
     if celeste.distance(maca) < 6:
         i += 2
         score += 1
+        tail.append(score)
         nova_apple()
 
     celeste.rabo(i)
+    # tail[0] = celeste.pos()
+    print(tail)
+    print(tamanho_tail)
+    print(ultimo_rabo)
 
 canvas.exitonclick()
