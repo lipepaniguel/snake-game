@@ -26,7 +26,7 @@ class Cobra(Turtle):
 celeste = Cobra()
 
 celeste.resizemode('user')
-celeste.shapesize(0.2, 0.2, 3)
+celeste.shapesize(0.3, 0.3)
 celeste.shape('circle')
 celeste.color('white')
 celeste.penup()

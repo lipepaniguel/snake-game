@@ -3,6 +3,14 @@ from apple import maca, nova_apple
 from snake import celeste
 import random
 
+continuar = True
+
+
+def comecar():
+    global continuar
+    continuar = True
+
+
 canvas = Screen()
 canvas.title('Snake')
 canvas.setup(400, 400)
@@ -17,6 +25,11 @@ canvas.onkeypress(celeste.desce, 's')
 canvas.onkeypress(celeste.direita, 'd')
 canvas.onkeypress(celeste.esquerda, 'a')
 
+# canvas.onkeypress(comecar, 'w')
+# canvas.onkeypress(comecar, 's')
+# canvas.onkeypress(comecar, 'd')
+# canvas.onkeypress(comecar, 'a')
+
 comprimento = 0
 score = 0
 
@@ -25,7 +38,7 @@ tail = [0]
 ultimo_rabo = []
 
 
-while True:
+while continuar:
 
     celeste.movimento()
     ultimo_rabo = celeste.pos()
@@ -39,8 +52,12 @@ while True:
     tail[0] = ultimo_rabo
 
     if len(tail) > 0:
-        if celeste.pos() in tail[1:]:
-            break
+        for _ in tail[1:]:
+            print(_)
+            print(celeste.distance(_))
+            if celeste.distance(_) < 2.9:
+                continuar = False
+                break
 
     if celeste.xcor() >= 190 or celeste.xcor() <= -190:
         break
