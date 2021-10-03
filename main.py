@@ -24,11 +24,7 @@ canvas.onkeypress(celeste.sobe, 'w')
 canvas.onkeypress(celeste.desce, 's')
 canvas.onkeypress(celeste.direita, 'd')
 canvas.onkeypress(celeste.esquerda, 'a')
-
-# canvas.onkeypress(comecar, 'w')
-# canvas.onkeypress(comecar, 's')
-# canvas.onkeypress(comecar, 'd')
-# canvas.onkeypress(comecar, 'a')
+# canvas.onkeypress(celeste.movimento, 'space')
 
 comprimento = 0
 score = 0
@@ -51,19 +47,22 @@ while continuar:
 
     tail[0] = ultimo_rabo
 
-    if len(tail) > 0:
-        for _ in tail[1:]:
-            print(_)
-            print(celeste.distance(_))
-            if celeste.distance(_) < 2.9:
-                continuar = False
-                break
+    if celeste.pos() in tail[1:]:
+        continuar = False
+        break
+
+    # if len(tail) > 0:
+    #     for _ in tail[1:]:
+
+    #         if celeste.distance(_) < 3:
+    #             continuar = False
+    #             break
 
     if celeste.xcor() >= 190 or celeste.xcor() <= -190:
         break
     if celeste.ycor() >= 190 or celeste.ycor() <= -190:
         break
-    if celeste.distance(maca) < 6:
+    if celeste.distance(maca) < 7:
         comprimento += 2
         score += 1
         tail.append(score)
