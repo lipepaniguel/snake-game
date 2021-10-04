@@ -35,7 +35,8 @@ ultimo_rabo = []
 
 
 while continuar:
-
+    # print(len(tail))
+    print(tail)
     celeste.movimento()
     ultimo_rabo = celeste.pos()
 
@@ -50,13 +51,6 @@ while continuar:
     if celeste.pos() in tail[1:]:
         continuar = False
         break
-
-    # if len(tail) > 0:
-    #     for _ in tail[1:]:
-
-    #         if celeste.distance(_) < 3:
-    #             continuar = False
-    #             break
 
     if celeste.xcor() >= 190 or celeste.xcor() <= -190:
         break

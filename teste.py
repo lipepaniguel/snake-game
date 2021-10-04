@@ -26,8 +26,8 @@ canvas.onkeypress(celeste.direita, 'd')
 canvas.onkeypress(celeste.esquerda, 'a')
 # canvas.onkeypress(celeste.movimento, 'space')
 
-variante_collider = 3
-
+variante_collider = 2
+fator_rabo = 1
 comprimento = 0
 score = 0
 
@@ -37,35 +37,32 @@ tail = [0, 1, 2]
 while continuar:
 
     celeste.movimento()
-    ultimo_rabo = celeste.pos()
-    for numero in range(variante_collider):
 
-        j = -1
+    j = -1
 
-        for w in range(len(tail) - 1):
-            tail[j] = tail[j - 1]
-            j -= 1
+    for w in range(len(tail) - 1):
+        tail[j] = tail[j - 1]
+        j -= 1
 
-    tail[0] = (celeste.xcor(), celeste.ycor())
-    tail[1] = (celeste.xcor(), celeste.ycor() - 1)
-    tail[2] = (celeste.xcor() - 1, celeste.ycor())
-    # tail[3] = (celeste.xcor(), celeste.ycor() - 1.5)
-    # tail[4] = (celeste.xcor() - 1.5, celeste.ycor())
+    tail[0] = (round(celeste.xcor()), round(celeste.ycor()))
 
     # print(tail)
 
-    if celeste.pos() in tail[3:]:
+    if (round(celeste.xcor()), round(celeste.ycor())) in tail[1:]:
+        print((round(celeste.xcor()), round(celeste.ycor())))
+        print(len(tail))
+        print(tail)
         continuar = False
         break
 
-    if celeste.xcor() >= 190 or celeste.xcor() <= -190:
+    if round(celeste.xcor()) >= 190 or round(celeste.xcor()) <= -190:
         break
-    if celeste.ycor() >= 190 or celeste.ycor() <= -190:
+    if round(celeste.ycor()) >= 190 or round(celeste.ycor()) <= -190:
         break
     if celeste.distance(maca) < 7:
         comprimento += 2
         score += variante_collider
-        for x in range(score):
+        for x in range(variante_collider * fator_rabo):
             tail.append(x)
 
         nova_apple()
