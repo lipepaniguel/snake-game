@@ -1,7 +1,15 @@
 from turtle import Screen
+from snake import celeste
 
 
-class Tela(Screen):
+canvas = Screen()
+canvas.title('Snake')
+canvas.setup(400, 400)
+canvas.screensize(370, 370)
+canvas.bgcolor('black')
 
-    def inicio(self, x, y):
-        self.setup(x, y)
+canvas.listen()
+canvas.onkeypress(celeste.sobe, 'w')
+canvas.onkeypress(celeste.desce, 's')
+canvas.onkeypress(celeste.direita, 'd')
+canvas.onkeypress(celeste.esquerda, 'a')

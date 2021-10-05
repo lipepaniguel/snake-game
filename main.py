@@ -1,27 +1,24 @@
-from turtle import Screen
+from turtle import Turtle
 from apple import maca, nova_apple
 from snake import celeste
-import random
+from tela import canvas
+
+pen = Turtle()
+pen.penup()
+pen.hideturtle()
+pen.speed(0)
+pen.color('white')
 
 
-def comecar():
-    global continuar
-    continuar = True
+def display():
+    celeste.color('gray')
+    celeste.clearstamps()
+    maca.hideturtle()
+    pen.goto(0, 15)
+    pen.write(f'Game over.', align='center', font=('Terminal', 13))
+    pen.goto(0, -15)
+    pen.write(f'Score: {score}', align='center', font=('Terminal', 13))
 
-
-canvas = Screen()
-canvas.title('Snake')
-canvas.setup(400, 400)
-canvas.screensize(370, 370)
-canvas.bgcolor('black')
-
-canvas.listen()
-canvas.onkeypress(celeste.sobe, 'w')
-canvas.onkeypress(celeste.desce, 's')
-canvas.onkeypress(celeste.direita, 'd')
-canvas.onkeypress(celeste.esquerda, 'a')
-
-nova_apple()
 
 comprimento = 0
 score = 0
@@ -29,10 +26,12 @@ score = 0
 tamanho_tail = [0, 1]
 tail = [0, 1, 2]
 
+nova_apple()
+
 continuar = True
 
 while continuar:
-    print(tail)
+
     celeste.movimento()
 
     j = -1
@@ -43,12 +42,16 @@ while continuar:
 
     tail[0] = (round(celeste.xcor()), round(celeste.ycor()))
 
-    if (round(celeste.xcor()), round(celeste.ycor())) in tail[1:]:
+    if (round(celeste.xcor()), round(celeste.ycor())) in tail[3:]:
+        display()
         break
 
-    if round(celeste.xcor()) >= 190 or round(celeste.xcor()) <= -190:
+    if round(celeste.xcor()) >= 189 or round(celeste.xcor()) <= -196:
+        display()
         break
-    if round(celeste.ycor()) >= 190 or round(celeste.ycor()) <= -190:
+
+    if round(celeste.ycor()) >= 196 or round(celeste.ycor()) <= -187:
+        display()
         break
 
     if celeste.distance(maca) < 7:

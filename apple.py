@@ -2,6 +2,7 @@ from snake import celeste
 import random
 
 maca = celeste.clone()
+maca.color('firebrick1')
 
 
 def nova_apple():
