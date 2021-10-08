@@ -3,15 +3,9 @@ from apple import maca, nova_apple
 from snake import celeste
 from tela import canvas
 
-pen = Turtle()
-pen.penup()
-pen.hideturtle()
-pen.speed(0)
-pen.color('white')
-
 
 def display():
-    celeste.color('gray')
+    celeste.color('gray30')
     celeste.clearstamps()
     maca.hideturtle()
     pen.goto(0, 15)
@@ -19,6 +13,12 @@ def display():
     pen.goto(0, -15)
     pen.write(f'Score: {score}', align='center', font=('Terminal', 13))
 
+
+pen = Turtle()
+pen.penup()
+pen.hideturtle()
+pen.speed(0)
+pen.color('white')
 
 comprimento = 0
 score = 0
