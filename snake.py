@@ -44,3 +44,4 @@ class Cobra(Turtle):
         self.tail = [0, 1, 2]
         self.goto(0, 0)
         self.color('white')
+        self.showturtle()

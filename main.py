@@ -45,6 +45,7 @@ while continuar:
     if (round(celeste.xcor()), round(celeste.ycor())) in celeste.tail[3:]:
         celeste.color('gray30')
         celeste.clearstamps()
+        celeste.hideturtle()
         maca.hideturtle()
         placar.display()
         canvas.update()
@@ -58,6 +59,7 @@ while continuar:
             round(celeste.ycor()) >= 196 or round(celeste.ycor()) <= -187:
         celeste.color('gray30')
         celeste.clearstamps()
+        celeste.hideturtle()
         maca.hideturtle()
         placar.display()
         canvas.update()
