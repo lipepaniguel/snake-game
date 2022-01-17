@@ -14,11 +14,6 @@ canvas.tracer(0)
 
 celeste = Cobra()
 
-
-def termino_partida():
-    return True
-
-
 canvas.listen()
 canvas.onkeypress(celeste.sobe, 'w')
 canvas.onkeypress(celeste.desce, 's')
@@ -28,11 +23,6 @@ canvas.onkeypress(celeste.esquerda, 'a')
 maca = Apple()
 
 placar = Placar()
-
-comprimento = 0
-
-tamanho_tail = [0, 1]
-tail = [0, 1, 2]
 
 maca.nova_apple()
 
@@ -46,13 +36,13 @@ while continuar:
 
     j = -1
 
-    for i in range(len(tail) - 1):
-        tail[j] = tail[j - 1]
+    for i in range(len(celeste.tail) - 1):
+        celeste.tail[j] = celeste.tail[j - 1]
         j -= 1
 
-    tail[0] = (round(celeste.xcor()), round(celeste.ycor()))
+    celeste.tail[0] = (round(celeste.xcor()), round(celeste.ycor()))
 
-    if (round(celeste.xcor()), round(celeste.ycor())) in tail[3:]:
+    if (round(celeste.xcor()), round(celeste.ycor())) in celeste.tail[3:]:
         celeste.color('gray30')
         celeste.clearstamps()
         maca.hideturtle()
@@ -60,11 +50,7 @@ while continuar:
         canvas.update()
         time.sleep(3)
         placar.clear()
-        comprimento = 0
-        tamanho_tail = [0, 1]
-        tail = [0, 1, 2]
-        celeste.goto(0, 0)
-        celeste.color('white')
+        celeste.restart()
         maca.nova_apple()
         # continuar = False
 
@@ -77,23 +63,17 @@ while continuar:
         canvas.update()
         time.sleep(3)
         placar.clear()
-        comprimento = 0
-        tamanho_tail = [0, 1]
-        tail = [0, 1, 2]
-        celeste.goto(0, 0)
-        celeste.color('white')
+        celeste.restart()
         maca.nova_apple()
         # continuar = False
 
     if celeste.distance(maca) < 7:
-        comprimento += 2
+        celeste.comprimento += 2
         placar.score_up()
-        tail.append(tamanho_tail[0])
-        tail.append(tamanho_tail[1])
-
+        celeste.novo_rabo()
         maca.nova_apple()
 
-    celeste.rabo(comprimento)
+    celeste.rabo(celeste.comprimento)
 
 canvas.update()
 canvas.exitonclick()
