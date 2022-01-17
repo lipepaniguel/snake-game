@@ -29,3 +29,4 @@ class Placar(Turtle):
                 f'New Record: {self.new_score} !',
                 align='center', font=('Terminal', 14)
                 )
+            self.score = 0

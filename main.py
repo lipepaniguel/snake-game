@@ -14,6 +14,11 @@ canvas.tracer(0)
 
 celeste = Cobra()
 
+
+def termino_partida():
+    return True
+
+
 canvas.listen()
 canvas.onkeypress(celeste.sobe, 'w')
 canvas.onkeypress(celeste.desce, 's')
@@ -52,21 +57,33 @@ while continuar:
         celeste.clearstamps()
         maca.hideturtle()
         placar.display()
-        continuar = False
+        canvas.update()
+        time.sleep(3)
+        placar.clear()
+        comprimento = 0
+        tamanho_tail = [0, 1]
+        tail = [0, 1, 2]
+        celeste.goto(0, 0)
+        celeste.color('white')
+        maca.nova_apple()
+        # continuar = False
 
-    if round(celeste.xcor()) >= 189 or round(celeste.xcor()) <= -196:
+    if round(celeste.xcor()) >= 189 or round(celeste.xcor()) <= -196 or \
+            round(celeste.ycor()) >= 196 or round(celeste.ycor()) <= -187:
         celeste.color('gray30')
         celeste.clearstamps()
         maca.hideturtle()
         placar.display()
-        continuar = False
-
-    if round(celeste.ycor()) >= 196 or round(celeste.ycor()) <= -187:
-        celeste.color('gray30')
-        celeste.clearstamps()
-        maca.hideturtle()
-        placar.display()
-        continuar = False
+        canvas.update()
+        time.sleep(3)
+        placar.clear()
+        comprimento = 0
+        tamanho_tail = [0, 1]
+        tail = [0, 1, 2]
+        celeste.goto(0, 0)
+        celeste.color('white')
+        maca.nova_apple()
+        # continuar = False
 
     if celeste.distance(maca) < 7:
         comprimento += 2
