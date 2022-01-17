@@ -1,7 +1,7 @@
-from turtle import Turtle
 from turtle import Screen
 from apple import Apple
 from snake import Cobra
+from score import Placar
 import time
 
 canvas = Screen()
@@ -11,17 +11,6 @@ canvas.screensize(370, 370)
 canvas.bgcolor('black')
 
 canvas.tracer(0)
-
-
-def display():
-    celeste.color('gray30')
-    celeste.clearstamps()
-    maca.hideturtle()
-    pen.goto(0, 15)
-    pen.write(f'Game Over', align='center', font=('Terminal', 30))
-    pen.goto(0, -15)
-    pen.write(f'Score: {score}', align='center', font=('Terminal', 14))
-
 
 celeste = Cobra()
 
@@ -33,14 +22,9 @@ canvas.onkeypress(celeste.esquerda, 'a')
 
 maca = Apple()
 
-pen = Turtle()
-pen.penup()
-pen.hideturtle()
-pen.speed(0)
-pen.color('white')
+placar = Placar()
 
 comprimento = 0
-score = 0
 
 tamanho_tail = [0, 1]
 tail = [0, 1, 2]
@@ -64,20 +48,29 @@ while continuar:
     tail[0] = (round(celeste.xcor()), round(celeste.ycor()))
 
     if (round(celeste.xcor()), round(celeste.ycor())) in tail[3:]:
-        display()
+        celeste.color('gray30')
+        celeste.clearstamps()
+        maca.hideturtle()
+        placar.display()
         continuar = False
 
     if round(celeste.xcor()) >= 189 or round(celeste.xcor()) <= -196:
-        display()
+        celeste.color('gray30')
+        celeste.clearstamps()
+        maca.hideturtle()
+        placar.display()
         continuar = False
 
     if round(celeste.ycor()) >= 196 or round(celeste.ycor()) <= -187:
-        display()
+        celeste.color('gray30')
+        celeste.clearstamps()
+        maca.hideturtle()
+        placar.display()
         continuar = False
 
     if celeste.distance(maca) < 7:
         comprimento += 2
-        score += 1
+        placar.score_up()
         tail.append(tamanho_tail[0])
         tail.append(tamanho_tail[1])
 
