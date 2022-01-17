@@ -3,8 +3,17 @@ from turtle import Turtle
 
 class Cobra(Turtle):
 
+    def __init__(self):
+        super().__init__()
+        self.resizemode('user')
+        self.shapesize(0.3, 0.3)
+        self.shape('circle')
+        self.color('white')
+        self.penup()
+        self.speed(0)
+
     def movimento(self):
-        self.forward(3)
+        self.forward(2)
 
     def rabo(self, i):
         n = self.stamp() - i
@@ -21,13 +30,3 @@ class Cobra(Turtle):
 
     def esquerda(self):
         self.setheading(180)
-
-
-celeste = Cobra()
-
-celeste.resizemode('user')
-celeste.shapesize(0.3, 0.3)
-celeste.shape('circle')
-celeste.color('white')
-celeste.penup()
-celeste.speed(0)
